@@ -76,7 +76,7 @@ const ProjectCard = memo(({ project }) => {
               <ExternalLink className="w-4 h-4" />
             )}
 
-            {link.type === "code" ? "Code" : "Demo"}
+
           </a>
         ))}
       </div>
@@ -102,7 +102,7 @@ function ProjectsComponent() {
         ],
         links: [
           {
-            type: "code",
+
             href: "#",
           },
         ],
@@ -120,7 +120,7 @@ function ProjectsComponent() {
         ],
         links: [
           {
-            type: "code",
+
             href: "#",
           },
         ],
@@ -138,7 +138,7 @@ function ProjectsComponent() {
         ],
         links: [
           {
-            type: "code",
+
             href: "#",
           },
         ],

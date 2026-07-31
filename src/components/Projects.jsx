@@ -1,5 +1,5 @@
 import React, { memo, useMemo } from "react";
-import { Code, ExternalLink, FolderKanban } from "lucide-react";
+import { FolderKanban } from "lucide-react"
 import { motion } from "framer-motion";
 
 import img1 from "../assets/1.png";
@@ -61,25 +61,7 @@ const ProjectCard = memo(({ project }) => {
         ))}
       </div>
 
-      <div className="flex gap-4 flex-wrap">
-        {project.links.map((link, linkIndex) => (
-          <a
-            key={linkIndex}
-            href={link.href}
-            className="flex items-center gap-2 text-primary font-semibold text-sm hover:underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {link.type === "code" ? (
-              <Code className="w-4 h-4" />
-            ) : (
-              <ExternalLink className="w-4 h-4" />
-            )}
 
-
-          </a>
-        ))}
-      </div>
     </motion.div>
   );
 });

@@ -10,15 +10,15 @@ import {
   X,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 // Move static data outside component
 const navLinks = [
-  { to: "/about", icon: User, text: "About" },
-  { to: "/skills", icon: BrainCircuit, text: "Skills" },
-  { to: "/academics", icon: GraduationCap, text: "Education" },
-  { to: "/projects", icon: FolderKanban, text: "Projects" },
-
-  { to: "/contact", icon: Mail, text: "Contact" },
+  { to: "/about", icon: User, text: "about" },
+  { to: "/skills", icon: BrainCircuit, text: "skills" },
+  { to: "/academics", icon: GraduationCap, text: "education" },
+  { to: "/projects", icon: FolderKanban, text: "projects" },
+  { to: "/contact", icon: Mail, text: "contact" },
 ];
 
 // Animation variants
@@ -59,7 +59,7 @@ const overlayVariants = {
 };
 
 // Memoized nav item component
-const NavItem = memo(({ link, onNavClick, isActive }) => {
+const NavItem = memo(({ link, onNavClick, isActive, t }) => {
   const Icon = link.icon;
   return (
     <motion.li variants={itemVariants} className="w-full">
@@ -72,7 +72,9 @@ const NavItem = memo(({ link, onNavClick, isActive }) => {
         style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
       >
         <Icon className="w-5 h-5 flex-shrink-0" style={{ display: 'inline-block' }} />
-        <span className="leading-none" style={{ display: 'inline-block' }}>{link.text}</span>
+        <span className="leading-none" style={{ display: 'inline-block' }}>
+  {t(link.text)}
+</span>
       </Link>
     </motion.li>
   );
@@ -81,6 +83,7 @@ NavItem.displayName = "NavItem";
 
 const SideNav = memo(({ open, onClose }) => {
   const location = useLocation();
+  const { t } = useTranslation();
 
   // Memoize event handlers
   const handleKeyDown = useCallback((e) => {
@@ -108,16 +111,19 @@ const SideNav = memo(({ open, onClose }) => {
   }, [open, handleKeyDown, handleClickOutside]);
 
   // Memoize nav items to prevent recreation
-  const navItems = useMemo(() =>
+  const navItems = useMemo(
+  () =>
     navLinks.map((link) => (
       <NavItem
         key={link.to}
         link={link}
         onNavClick={onClose}
         isActive={location.pathname === link.to}
+        t={t}
       />
-    )), [onClose, location.pathname]
-  );
+    )),
+  [onClose, location.pathname, t]
+);
 
   return (
     <>

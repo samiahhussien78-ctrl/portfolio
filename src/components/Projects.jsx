@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import img1 from "../assets/1.png";
 import img2 from "../assets/2.png";
 import img3 from "../assets/3.png";
+import img4 from "../assets/4.png";
 
 // --- Animation Variants ---
 const containerVariants = {
@@ -50,7 +51,7 @@ const ProjectCard = memo(({ project }) => {
         {project.desc}
       </p>
 
-     <div className="flex flex-wrap gap-2 mb-5 mt-auto">
+   <div className="flex flex-wrap gap-2 mb-5 mt-auto">
   {project.tags.map((tag, tagIndex) => (
     <span
       key={tagIndex}
@@ -60,6 +61,26 @@ const ProjectCard = memo(({ project }) => {
     </span>
   ))}
 </div>
+
+{project.report && (
+  <a
+    href={project.report}
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{
+      backgroundColor: "#000000",
+      color: "#ffffff",
+      padding: "10px 20px",
+      borderRadius: "8px",
+      display: "inline-flex",
+      fontWeight: "700",
+      marginTop: "16px",
+      border: "2px solid #000000",
+    }}
+  >
+    View Report
+  </a>
+)}
 
 </motion.div>
 );
@@ -98,18 +119,33 @@ function ProjectsComponent() {
     },
 
     {
-      title: t("heritageSalesTitle"),
-      image: img3,
-      desc: t("heritageSalesDesc"),
-      tags: [
-        "Excel",
-        "Pivot Tables",
-        "Dashboard",
-        "Data Analysis",
-      ],
-    },
+  title: t("heritageSalesTitle"),
+  image: img3,
+  desc: t("heritageSalesDesc"),
+  tags: [
+    "Excel",
+    "Pivot Tables",
+    "Dashboard",
+    "Data Analysis",
   ],
-  [t]
+},
+
+{
+  title: t("graduationProjectTitle"),
+  image: img4,
+  desc: t("graduationProjectDesc"),
+  tags: [
+    "Python",
+    "TensorFlow",
+    "Keras",
+    "Scikit-learn",
+    "Deep Learning",
+    "Data Analysis",
+  ],
+  report: "/src/assets/Graduation_Project.pdf",
+},
+],
+[t]
 );
 
   return (<div className="w-full min-h-[80vh] flex flex-col items-center justify-center px-4 py-12">

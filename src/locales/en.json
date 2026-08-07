@@ -38,5 +38,7 @@
 "realEstateDesc": "Power BI dashboard designed to analyze real estate sales data with interactive charts, regional insights, and revenue analysis.",
 
 "heritageSalesTitle": "Heritage Sales Dashboard 2026",
-"heritageSalesDesc": "Excel dashboard built with Pivot Tables, slicers, charts, and KPIs to analyze heritage product sales effectively."
+"heritageSalesDesc": "Excel dashboard built with Pivot Tables, slicers, charts, and KPIs to analyze heritage product sales effectively.",
+  "graduationProjectTitle": "Smart System for Predicting Chronic Diseases Using Deep Learning",
+"graduationProjectDesc": "Graduation project focused on developing a deep learning–based prototype for predicting chronic diseases using medical data. The project includes data preprocessing, model training, evaluation, and performance analysis to support early disease prediction."
 }

@@ -50,20 +50,19 @@ const ProjectCard = memo(({ project }) => {
         {project.desc}
       </p>
 
-      <div className="flex flex-wrap gap-2 mb-5 mt-auto">
-        {project.tags.map((tag, tagIndex) => (
-          <span
-            key={tagIndex}
-            className="px-3 py-1 rounded-full text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-300 dark:border-neutral-600"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
+     <div className="flex flex-wrap gap-2 mb-5 mt-auto">
+  {project.tags.map((tag, tagIndex) => (
+    <span
+      key={tagIndex}
+      className="px-3 py-1 rounded-full text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-300 dark:border-neutral-600"
+    >
+      {tag}
+    </span>
+  ))}
+</div>
 
-
-    </motion.div>
-  );
+</motion.div>
+);
 });
 
 ProjectCard.displayName = "ProjectCard";
@@ -72,60 +71,45 @@ ProjectCard.displayName = "ProjectCard";
 function ProjectsComponent() {
   const { t } = useTranslation();
 
-  const projectsData = useMemo(
-    () => [
-      {
-  title: t("flowerSalesTitle"),
-  image: img1,
-  desc: t("flowerSalesDesc"),
-  tags: [
-    "Power BI",
-    "Power Query",
-    "Excel",
-    "Data Visualization",
-  ],
-  links: [
+ const projectsData = useMemo(
+  () => [
     {
-      href: "#",
+      title: t("flowerSalesTitle"),
+      image: img1,
+      desc: t("flowerSalesDesc"),
+      tags: [
+        "Power BI",
+        "Power Query",
+        "Excel",
+        "Data Visualization",
+      ],
     },
-  ],
-},
 
-      {
-  title: t("realEstateTitle"),
-  image: img2,
-  desc: t("realEstateDesc"),
-  tags: [
-    "Power BI",
-    "Dashboard",
-    "Excel",
-    "Data Analysis",
-  ],
-  links: [
     {
-      href: "#",
+      title: t("realEstateTitle"),
+      image: img2,
+      desc: t("realEstateDesc"),
+      tags: [
+        "Power BI",
+        "Dashboard",
+        "Excel",
+        "Data Analysis",
+      ],
     },
-  ],
-},
 
-      {
-  title: t("heritageSalesTitle"),
-  image: img3,
-  desc: t("heritageSalesDesc"),
-  tags: [
-    "Excel",
-    "Pivot Tables",
-    "Dashboard",
-    "Data Analysis",
-  ],
-  links: [
     {
-      href: "#",
+      title: t("heritageSalesTitle"),
+      image: img3,
+      desc: t("heritageSalesDesc"),
+      tags: [
+        "Excel",
+        "Pivot Tables",
+        "Dashboard",
+        "Data Analysis",
+      ],
     },
   ],
-},
-],
-[t]
+  [t]
 );
 
   return (<div className="w-full min-h-[80vh] flex flex-col items-center justify-center px-4 py-12">

@@ -1,7 +1,7 @@
 import React, { memo, useMemo } from "react";
 import { FolderKanban } from "lucide-react"
 import { motion } from "framer-motion";
-
+import { useTranslation } from "react-i18next";
 import img1 from "../assets/1.png";
 import img2 from "../assets/2.png";
 import img3 from "../assets/3.png";
@@ -70,64 +70,63 @@ ProjectCard.displayName = "ProjectCard";
 
 // --- Main Projects Component ---
 function ProjectsComponent() {
+  const { t } = useTranslation();
+
   const projectsData = useMemo(
     () => [
       {
-        title: "Flower Sales Dashboard 2024",
-        image: img1,
-        desc: "Interactive Power BI dashboard analyzing flower sales in 2024. It provides insights into sales performance, monthly trends, top-selling products, and key business KPIs.",
-        tags: [
-          "Power BI",
-          "Power Query",
-          "Excel",
-          "Data Visualization",
-        ],
-        links: [
-          {
-
-            href: "#",
-          },
-        ],
-      },
-
-      {
-        title: "Real Estate Sales Dashboard",
-        image: img2,
-        desc: "Power BI dashboard designed to analyze real estate sales data with interactive charts, regional insights, and revenue analysis.",
-        tags: [
-          "Power BI",
-          "Dashboard",
-          "Excel",
-          "Data Analysis",
-        ],
-        links: [
-          {
-
-            href: "#",
-          },
-        ],
-      },
+  title: t("flowerSalesTitle"),
+  image: img1,
+  desc: t("flowerSalesDesc"),
+  tags: [
+    "Power BI",
+    "Power Query",
+    "Excel",
+    "Data Visualization",
+  ],
+  links: [
+    {
+      href: "#",
+    },
+  ],
+},
 
       {
-        title: "Heritage Sales Dashboard 2026",
-        image: img3,
-        desc: "Excel dashboard built with Pivot Tables, slicers, charts, and KPIs to analyze heritage product sales effectively.",
-        tags: [
-          "Excel",
-          "Pivot Tables",
-          "Dashboard",
-          "Data Analysis",
-        ],
-        links: [
-          {
+  title: t("realEstateTitle"),
+  image: img2,
+  desc: t("realEstateDesc"),
+  tags: [
+    "Power BI",
+    "Dashboard",
+    "Excel",
+    "Data Analysis",
+  ],
+  links: [
+    {
+      href: "#",
+    },
+  ],
+},
 
-            href: "#",
-          },
-        ],
-      },
-    ],
-    []
-  );
+      {
+  title: t("heritageSalesTitle"),
+  image: img3,
+  desc: t("heritageSalesDesc"),
+  tags: [
+    "Excel",
+    "Pivot Tables",
+    "Dashboard",
+    "Data Analysis",
+  ],
+  links: [
+    {
+      href: "#",
+    },
+  ],
+},
+],
+[t]
+);
 
   return (<div className="w-full min-h-[80vh] flex flex-col items-center justify-center px-4 py-12">
       <motion.div
@@ -142,13 +141,11 @@ function ProjectsComponent() {
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-center mb-4 flex items-center gap-4 text-foreground">
             <FolderKanban className="w-8 h-8 sm:w-11 sm:h-11 text-primary drop-shadow-sm" />
-            Projects
+            {t("projectsTitle")}
           </h2>
 
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-center mb-10">
-            A collection of my data analytics and business intelligence
-            projects built using Power BI and Excel to transform raw data into
-            meaningful insights and interactive dashboards.
+           {t("projectsDescription")}
           </p>
         </motion.div>
 

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
+import { useTranslation } from "react-i18next";
 
 // --- Animation Variants (The "Staggered Entrance" Pattern) ---
 const sectionContainerVariants = {
@@ -68,6 +69,8 @@ const StatusMessage = ({ status, message }) => {
 
 // --- Main Contact Component ---
 function ContactComponent() {
+  const { t } = useTranslation();
+
   const [formState, setFormState] = useState({
     status: "idle",
     message: "",
@@ -80,12 +83,12 @@ function ContactComponent() {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
 
-    try {
-      const response = await fetch("https://formspree.io/f/mldnaeeb", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+   try {
+  const response = await fetch("https://formspree.io/f/xnpangna", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
 
       if (response.ok) {
         setFormState({
@@ -120,12 +123,12 @@ function ContactComponent() {
               <span className="inline-flex items-center justify-center gap-3">
                 {/* THE FIX: Applying a responsive 'top' utility for perfect alignment */}
                 <Mail className="w-7 h-7 sm:w-9 sm:h-9 text-primary drop-shadow-sm flex-shrink-0 relative top-px sm:top-0.5" />
-                <span>Contact</span>
+                <span>{t("contact")}</span>
               </span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
-                Whether you want to discuss a project, ask a question, or just say hello, I’d love to hear from you. Fill out the form below or email me directly. Let’s connect!
-            </p>
+               {t("contactDescription")}
+               </p>
         </motion.div>
 
         <motion.div variants={itemVariants}>
@@ -152,15 +155,15 @@ function ContactComponent() {
           </AnimatePresence>
           
           <motion.div variants={itemVariants}>
-            <Input type="text" name="name" placeholder="Your Name" required disabled={formState.status === "loading"} className="text-foreground disabled:opacity-50" />
+            <Input type="text" name="name" placeholder={t("yourName")} required disabled={formState.status === "loading"} className="text-foreground disabled:opacity-50" />
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            <Input type="email" name="email" placeholder="Your Email" required disabled={formState.status === "loading"} className="text-foreground disabled:opacity-50" />
+            <Input type="email" name="email" placeholder={t("yourEmail")} required disabled={formState.status === "loading"} className="text-foreground disabled:opacity-50" />
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            <Textarea rows={4} name="message" placeholder="Your Message" required disabled={formState.status === "loading"} className="resize-y text-foreground disabled:opacity-50" />
+            <Textarea rows={4} name="message" placeholder={t("yourMessage")} required disabled={formState.status === "loading"} className="resize-y text-foreground disabled:opacity-50" />
           </motion.div>
 
           <motion.div variants={itemVariants}>
@@ -168,11 +171,11 @@ function ContactComponent() {
               {formState.status === "loading" ? (
                 <>
                   <Loader2 className="w-4 h-4 animate-spin" />
-                  Sending...
+                  {t("sending")}
                 </>
               ) : (
                 <>
-                  Send Message <Send className="w-4 h-4" />
+                  {t("sendMessage")} <Send className="w-4 h-4" />
                 </>
               )}
             </Button>

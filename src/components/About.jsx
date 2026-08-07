@@ -1,6 +1,7 @@
 import { Github, Linkedin, Mail, FileText, GraduationCap } from "lucide-react";
 import { motion } from "framer-motion";
 import { useMemo, memo } from "react";
+import { useTranslation } from "react-i18next";
 
 // Memoized social link component
 const SocialLink = memo(({ href, icon, title, className }) => (
@@ -49,6 +50,8 @@ const TAGS = [
 
 const RESUME_URL = "/CV.pdf";
 export default memo(function About() {
+  const { t } = useTranslation();
+
   const socialLinksElements = useMemo(
     () =>
       SOCIAL_LINKS.map(({ href, icon, title }) => (
@@ -104,48 +107,47 @@ export default memo(function About() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neutral-200/50 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 mb-4">
             <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-            <span className="text-sm font-semibold text-primary uppercase tracking-wide">
-              About Me
-            </span>
+           <span className="text-sm font-semibold text-primary uppercase tracking-wide">
+  {t("aboutMe")}
+</span>
           </div>
-
-          <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-3 text-foreground text-center md:text-left">
-            Hi, I'm{" "}
-            <span className="bg-gradient-to-r from-neutral-800 via-neutral-700 to-neutral-600 dark:from-white dark:via-neutral-300 dark:to-neutral-400 bg-clip-text text-transparent">
-              Samiah Basher
-            </span>
-          </h1>
+<h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-3 text-foreground text-center md:text-left">
+  {t("hi")}{" "}
+  <span className="bg-gradient-to-r from-neutral-800 via-neutral-700 to-neutral-600 dark:from-white dark:via-neutral-300 dark:to-neutral-400 bg-clip-text text-transparent">
+    {t("name")}
+  </span>
+</h1>
 
           <div className="flex items-center justify-center md:justify-start gap-2 text-muted-foreground text-sm mb-2">
             <GraduationCap className="w-4 h-4" />
-            <span>Islamic University of Minnesota</span>
+            <span>{t("university")}</span>
           </div>
 
-          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl mb-4 text-center md:text-left">
-           I am a Data Analytics and Artificial Intelligence student with a strong interest in data analysis and business intelligence.{" "}
-            <span className="text-foreground font-medium">
-              I enjoy transforming raw data into meaningful insights using Excel, SQL, Power BI, and Python. I am continuously improving my technical skills through academic projects and hands-on practice, with the goal of helping organizations make data-driven decisions.
-            </span>{" "}
+       <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl mb-4 text-center md:text-left">
+  {t("aboutText1")}{" "}
+  <span className="text-foreground font-medium">
+    {t("aboutText2")}
+  </span>
+</p>
 
-          </p>
+<div className="flex flex-wrap gap-2 mb-4 justify-center md:justify-start">
+  {tagElements}
+</div>
 
-          <div className="flex flex-wrap gap-2 mb-4 justify-center md:justify-start">
-            {tagElements}
-          </div>
+<div className="flex flex-wrap gap-4 justify-center md:justify-start">
+  {socialLinksElements}
 
-          <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-            {socialLinksElements}
-            <a
-              href={RESUME_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 h-11 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:scale-105 transition-all"
-            >
-              <FileText className="w-4 h-4" />
-              Resume
-            </a>
-          </div>
-        </motion.div>
+  <a
+    href={RESUME_URL}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center gap-2 px-4 h-11 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:scale-105 transition-all"
+  >
+    <FileText className="w-4 h-4" />
+    {t("cv")}
+  </a>
+</div>
+</motion.div>
       </div>
     </motion.div>
   );

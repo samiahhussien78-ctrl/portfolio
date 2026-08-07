@@ -1,6 +1,7 @@
 import React, { useMemo, memo } from "react";
 import { GraduationCap } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 // --- Animation Variants (The "Staggered Entrance" Pattern) ---
 // This container will orchestrate the animation for the whole page
@@ -76,29 +77,30 @@ EducationCard.displayName = "EducationCard";
 
 
 // --- Static Data (No changes needed) ---
-const ACADEMICS_DATA = [
+const ACADEMICS_DATA = (t) => [
   {
     logo: "/assets/logos/iit_bhu.png",
     alt: "Islamic University of Minnesota Logo",
-title: "Islamic University of Minnesota",
-link: "https://www.iuminnesota.edu/",
-    program: "Bachelor of Data Analytics and Artificial Intelligence",
-    year: "2024 – 2027",
-    scoreLabel: "CGPA",
+    title: t("university"),
+    link: "https://www.iuminnesota.edu/",
+    program: t("degree"),
+    year: t("graduationYear"),
+    scoreLabel: t("cgpa"),
     score: "4.83 / 5",
   },
-
 ];
 
 
 // --- Main Academics Component ---
 const AcademicsComponent = memo(function Academics() {
+  const { t } = useTranslation();
+
   const educationCards = useMemo(
     () =>
-      ACADEMICS_DATA.map((education, index) => (
+      ACADEMICS_DATA(t).map((education, index) => (
         <EducationCard key={`${education.title}-${index}`} education={education} />
       )),
-    []
+    [t]
   );
 
   return (
@@ -113,13 +115,14 @@ const AcademicsComponent = memo(function Academics() {
       >
         {/* Item 1: The header text block */}
         <motion.div variants={itemVariants} className="flex flex-col items-center text-center">
-            <h2 className="text-4xl sm:text-5xl font-bold text-center mb-4 flex items-center gap-4 text-foreground">
-                <GraduationCap className="w-8 h-8 sm:w-11 sm:h-11 text-primary drop-shadow-sm" />
-                Education
-            </h2>
+           <h2 className="text-4xl sm:text-5xl font-bold text-center mb-4 flex items-center gap-4 text-foreground">
+    <GraduationCap className="w-8 h-8 sm:w-11 sm:h-11 text-primary drop-shadow-sm" />
+    {t("education")}
+</h2>
             <motion.p variants={itemVariants} className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
-               My academic journey in Data Analytics and Artificial Intelligence has provided me with a strong foundation in data analysis, machine learning, databases, and business intelligence through both coursework and practical projects. </motion.p>
-        </motion.div>
+   {t("educationDescription")}
+</motion.p>
+</motion.div>
 
         {/* Item 2: The entire list of education cards */}
         <motion.div

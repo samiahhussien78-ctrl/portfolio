@@ -104,6 +104,15 @@ const Header = memo(({ toggleTheme, currentTheme, onHamburgerClick }) => {
       </nav>
 
       <div className="flex max-[934px]:flex hidden items-center gap-2">
+          {/* زر تغيير اللغة */}
+        <button
+          onClick={() =>
+            i18n.changeLanguage(i18n.language === "en" ? "ar" : "en")
+          }
+          className="px-3 py-1 rounded-md border text-sm hover:bg-primary/10"
+        >
+          {i18n.language === "en" ? "العربية" : "English"}
+        </button>
         <button
           onClick={handleThemeToggle}
           type="button"

@@ -102,11 +102,10 @@ const AcademicsComponent = memo(function Academics() {
       )),
     [t]
   );
-
-  return (
+return (
     <div className="w-full min-h-[80vh] flex flex-col items-center justify-center px-4 py-12">
       {/* 1. This is the SINGLE animation container for the whole page. */}
-      {/* It uses `animate`, not `whileInView`, for guaranteed execution. */}
+      {/* It uses animate, not whileInView, for guaranteed execution. */}
       <motion.div
         variants={containerVariants}
         initial="hidden"

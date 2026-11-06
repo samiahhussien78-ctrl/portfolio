@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useMemo, memo } from "react";
 import { useTranslation } from "react-i18next";
 
+
 // Memoized social link component
 const SocialLink = memo(({ href, icon, title, className }) => (
   <a
@@ -26,6 +27,11 @@ const Tag = memo(({ tag }) => (
 Tag.displayName = "Tag";
 
 const SOCIAL_LINKS = [
+    {
+  href: "https://github.com/samiahhussien78-ctrl",
+  icon: <Github className="w-5 h-5" />,
+  title: "GitHub",
+},
 
   {
     href: "https://www.linkedin.com/in/samiah-basher-325547424",

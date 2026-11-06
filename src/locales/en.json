@@ -40,5 +40,7 @@
 "heritageSalesTitle": "Heritage Sales Dashboard 2026",
 "heritageSalesDesc": "Excel dashboard built with Pivot Tables, slicers, charts, and KPIs to analyze heritage product sales effectively.",
   "graduationProjectTitle": "Smart System for Predicting Chronic Diseases Using Deep Learning",
-"graduationProjectDesc": "Graduation project focused on developing a deep learning–based prototype for predicting chronic diseases using medical data. The project includes data preprocessing, model training, evaluation, and performance analysis to support early disease prediction."
+"graduationProjectDesc": "Graduation project focused on developing a deep learning–based prototype for predicting chronic diseases using medical data. The project includes data preprocessing, model training, evaluation, and performance analysis to support early disease prediction.",
+   "saudiCoffeeTitle": "Saudi Coffee Shops Sales Analysis 2024",
+  "saudiCoffeeDesc": "An interactive Excel dashboard analyzing Saudi coffee shop sales, including revenue by region and branch, product profitability, sales quantities, and payment methods using Pivot Tables and Pivot Charts."
 }
